@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 
@@ -14,9 +13,7 @@ export class DownloadService {
     ) {
     }
 
-    download(gameName: string): Observable<Blob> {
-        return this.http.get(`${environment.backendContext}download/${gameName}`, {
-            responseType: 'blob'
-        });
+    downloadUrl(gameName: string): string {
+        return `${environment.backendContext}download/${gameName}`;
     }
 }

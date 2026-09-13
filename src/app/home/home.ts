@@ -32,17 +32,7 @@ export class HomeComponent {
     }
 
     downloadGame(gameName: string): void {
-        this.downloadService.download(gameName).subscribe(blob => {
-            const url = window.URL.createObjectURL(blob);
-            const anchor = document.createElement('a');
-
-            anchor.href = url;
-            anchor.download = `${gameName}.zip`;
-            document.body.appendChild(anchor);
-            anchor.click();
-            document.body.removeChild(anchor);
-            window.URL.revokeObjectURL(url);
-        });
+        window.location.href = this.downloadService.downloadUrl(gameName);
     }
 
 }

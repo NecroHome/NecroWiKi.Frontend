@@ -34,6 +34,17 @@
 
                     </p-button>
 
+                    } @else if (link.downloadGameName) {
+
+                    <p-button [severity]="link.severity" [raised]="true" [label]="link.label" [icon]="link.icon"
+                        (onClick)="downloadGame(link.downloadGameName)">
+
+                        @if (link.image) {
+                        <img [src]="link.image" alt="" class="service-icon" />
+                        }
+
+                    </p-button>
+
                     } @else {
 
                     <p-button [severity]="link.severity" [raised]="true" [label]="link.label" [icon]="link.icon"

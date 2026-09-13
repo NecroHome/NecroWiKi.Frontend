@@ -7,6 +7,7 @@ export interface WikiLink {
     image?: string;
     severity?: 'success' | 'info' | 'warn' | 'danger' | 'help' | 'secondary' | 'contrast';
     external?: true | false;
+    downloadGameName?: string;
 }
 
 
@@ -109,7 +110,7 @@ export const WIKI_CONFIG: WikiItem[] = [
     },
     {
         id: 'wow',
-        title: 'NecroHome - WoW 3.3.5',
+        title: 'World of Warcraft',
         subtitle: 'Wrath of the Lich King',
         image: '/images/wotlk.png',
         theme: 'wow',
@@ -123,10 +124,18 @@ export const WIKI_CONFIG: WikiItem[] = [
                 severity: 'warn'
             },
             {
-                label: 'Download',
-                route: '/download/wow',
+                label: 'Download WotLK 3.5.5a',
+                route: '/download/wow-wotlk',
                 icon: 'pi pi-download',
-                severity: 'warn'
+                severity: 'warn',
+                downloadGameName: 'World_of_Warcraft_3.5.5_WotLK'
+            },
+            {
+                label: 'Download TBC 2.4.3',
+                route: '/download/wow-tbc',
+                icon: 'pi pi-download',
+                severity: 'warn',
+                downloadGameName: 'World_of_Warcraft_2.4.3_TBC'
             },
             {
                 label: 'Tutoriais',
@@ -155,11 +164,36 @@ export const WIKI_CONFIG: WikiItem[] = [
                 label: 'Download',
                 route: '/download/ragnarok',
                 icon: 'pi pi-download',
-                severity: 'info'
+                severity: 'info',
+                downloadGameName: 'Ragnarok_2012_Pre-Renewal'
             },
             {
                 label: 'Tutoriais',
                 route: '/tutorials/ragnarok',
+                icon: 'pi pi-book',
+                severity: 'info'
+            }
+        ]
+    },
+    {
+        id: 'warcraft',
+        title: 'Warcraft III',
+        subtitle: 'The Frozen Throne',
+        image: '/images/warcraft3.png',
+        theme: 'warcraft3',
+        route: '/warcraft3',
+
+        links: [
+            {
+                label: 'Download',
+                route: '/warcraft3',
+                icon: 'pi pi-download',
+                severity: 'info',
+                downloadGameName: 'Warcraft_III'
+            },
+            {
+                label: 'Tutoriais',
+                route: '/diablo2/tutorials',
                 icon: 'pi pi-book',
                 severity: 'info'
             }
@@ -175,10 +209,18 @@ export const WIKI_CONFIG: WikiItem[] = [
 
         links: [
             {
-                label: 'Download',
-                route: '/diablo2/download',
+                label: 'Download Original',
+                route: '/diablo2/d2-original',
                 icon: 'pi pi-download',
-                severity: 'danger'
+                severity: 'danger',
+                downloadGameName: 'Diablo_II'
+            },
+            {
+                label: 'Download PlugY',
+                route: '/dialbo2/d2-plugy',
+                icon: 'pi pi-download',
+                severity: 'danger',
+                downloadGameName: 'Diablo_II_PlugY'
             },
             {
                 label: 'Tutoriais',

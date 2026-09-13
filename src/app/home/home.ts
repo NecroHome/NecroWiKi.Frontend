@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 
 import { WIKI_CONFIG } from '../config/wiki.config';
+import { DownloadService } from '../services/download.service';
 
 @Component({
     selector: 'app-home',
@@ -11,6 +12,9 @@ import { WIKI_CONFIG } from '../config/wiki.config';
         RouterLink,
         ButtonModule
     ],
+    providers: [
+        DownloadService
+    ],
     templateUrl: './home.html',
     styleUrl: './home.scss'
 })
@@ -18,8 +22,27 @@ export class HomeComponent {
 
     readonly wikiItems = WIKI_CONFIG;
 
+    constructor(
+        private readonly downloadService: DownloadService
+    ) {
+    }
+
     openExternal(url: string): void {
         window.open(url, '_blank', 'noopener,noreferrer');
+    }
+
+    downloadGame(gameName: string): void {
+        this.downloadService.download(gameName).subscribe(blob => {
+            const url = window.URL.createObjectURL(blob);
+            const anchor = document.createElement('a');
+
+            anchor.href = url;
+            anchor.download = `${gameName}.zip`;
+            document.body.appendChild(anchor);
+            anchor.click();
+            document.body.removeChild(anchor);
+            window.URL.revokeObjectURL(url);
+        });
     }
 
 }
